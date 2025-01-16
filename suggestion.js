@@ -1,7 +1,7 @@
 /*
 
 This is an example script for taking the last 7 days of of questions and answers and
-turning them into a summary.
+turning them into suggestions and an affirmation.
 
 For this to work you should have already run index.js to create the data files.
 */

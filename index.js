@@ -170,7 +170,7 @@ const main = async () => {
     // using the variable 'today' to compare it too
     const daysAgo = Math.floor((Date.parse(today) - Date.parse(date)) / 86400000)
     // The date is in the format of YYYY-MM-DD, we need to convert that into a day of the week
-    const dayOfTheWeek = daysOfTheWeek[new Date(date).getDay()]
+    const dayOfTheWeek = daysOfTheWeek[new Date(date).getUTCDay()]
     // If it exists, we need to loop through them
     if (questionsAndAnswers.answers[date]) {
       // Loop through those question answer objects
@@ -285,7 +285,9 @@ const main = async () => {
 
   // Now we need to save the answers to the endofdayAnswers.json file
   // First we need to get the date in YYYY-MM-DD format
-  const date = d.toISOString().slice(0, 10)
+  const offset = d.getTimezoneOffset()
+  const offsetDate = new Date(d.getTime() - (offset*60*1000))
+  const date = offsetDate.toISOString().slice(0, 10)
   // Now we need to see if we have an entry for this date in the previousQuestionsAndAnswers.json file,
   // if not add it to the dateMap array and create an empty answers array
   if (!questionsAndAnswers.answers) questionsAndAnswers.answers = {}

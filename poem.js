@@ -1,7 +1,7 @@
 /*
 
 This is an example script for taking the last 7 days of of questions and answers and
-turning them into a summary.
+turning them into a poem.
 
 For this to work you should have already run index.js to create the data files.
 */
@@ -123,7 +123,7 @@ const main = async () => {
     process.exit(1)
   }
 
-  const filename = `summary-${new Date().toISOString().split('T')[0]}.md`
+  const filename = `poem-${new Date().toISOString().split('T')[0]}.md`
   fs.writeFileSync(path.join(dataFolder, filename), output, 'utf8')
 
   // We want a display version of the summary so we can see it in the terminal
